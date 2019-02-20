@@ -13,7 +13,6 @@
   </header>
   <main>
     <div id="keyBoard" class="wrapper">
-
     </div>
   </main>
   <footer></footer>
@@ -44,26 +43,46 @@
     var index = 0
     while (index < keys.length) {
         div1 = document.createElement('div')
+        div1.className = 'row'
         keyBoard.appendChild(div1)
         row = keys[index]
         // console.log(keys[index])
         index2 = 0
         while (index2 < row.length) {
             z = document.createElement('kbd')
-            z.textContent = row[index2]
+            span = document.createElement('span')
+            span.textContent = row[index2]
+            span.className = 'text'
+            z.className = 'key'
             buttonX = document.createElement('button')
             buttonX.textContent = '编辑'
-            z.appendChild(buttonX)
             buttonX.id = row[index2]
+            img = document.createElement('img')
+            if (hash[row[index2]]) {
+                img.src = 'http://' + hash[row[index2]] + '/favicon.ico'
+            } else {
+                img.src = 'https://i.loli.net/2019/02/20/5c6cfe9ec9be7.png'
+            }
+            img.onerror = function(event) {
+                event.target.src = 'https://i.loli.net/2019/02/20/5c6d0c9e12ab7.png'
+            }
             buttonX.onclick = function (clicked) {
-                // console.log('clicked')
+                button = clicked.target
+                img2 = button.previousSibling
                 key = clicked.target.id
-                // console.log(key)
+                console.log(key)
                 newUrl = prompt('新网址')
                 hash[key] = newUrl
+                img2.src = 'http://' + newUrl + '/favicon.ico'
+                img2.onerror = function(event) {
+                    event.target.src = 'https://i.loli.net/2019/02/20/5c6d0c9e12ab7.png'
+                }
                 localStorage.setItem('url', JSON.stringify(hash))
                 console.log(hash)
             }
+            z.appendChild(span)
+            z.appendChild(img)
+            z.appendChild(buttonX)
             div1.appendChild(z)
             index2 = index2 + 1
         }

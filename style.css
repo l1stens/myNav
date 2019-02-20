@@ -3,6 +3,12 @@
     padding: 0;
 }
 
+body {
+    height: 100vh;
+    background: grey url("./wall.jpg") no-repeat center center;
+    background-size: cover;
+}
+
 a {
     text-decoration: none;
 }
@@ -13,7 +19,6 @@ kbd {
     width: 4em;
     height: 4em;
     display: inline-block;
-    line-height: 4em;
     position: relative;
 }
 
@@ -29,10 +34,10 @@ kbd:hover > button {
 }
 
 #keyBoard > div:nth-child(2){
-    margin-left: 2em;
+    margin-left: -20px;
 }
 #keyBoard > div:nth-child(3){
-    margin-left: 4em;
+    margin-left: -85px;
 }
 
 #keyBoard {
@@ -41,4 +46,47 @@ kbd:hover > button {
 
 main {
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.key {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+    border: 1px solid #373737;
+    color: #C5C5C5;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #1A1B1C, 0 0 0 2px #1F2020, 0 2px 0 2px #080808;
+    font-size: 16px;
+    font-family: Helvetica;
+    position: relative;
+}
+.row {
+    margin: 20px;
+}
+.row .key {
+    margin: 0 10px;
+}
+
+.wrapper{
+    background: rgba(255,255,255,0.2);
+    border-radius: 15px;
+}
+
+.key img{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 3px;
+    bottom: 2px;
+}
+
+.key .text{
+    position: absolute;
+    top: 2px;
+    left: 3px;
+
 }
